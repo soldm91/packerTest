@@ -12,5 +12,11 @@ cp -f /var/lib/jenkins/terraformPractice/hello.txt hello.txt
 packer build -var-file=variables.json rhel.json'''
       }
     }
+    stage('Sleep 10 min') {
+      steps {
+        echo 'Sleeping'
+        sleep(time: 10, unit: 'MINUTES')
+      }
+    }
   }
 }
