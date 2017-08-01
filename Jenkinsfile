@@ -9,13 +9,7 @@ cp -f /var/lib/jenkins/variables/variables.json variables.json
 cp -f /var/lib/jenkins/terraformPractice/rhel.json rhel.json
 cp -f /var/lib/jenkins/terraformPractice/script.sh script.sh
 cp -f /var/lib/jenkins/terraformPractice/hello.txt hello.txt
-packer build -var-file=variables.json rhel.json'''
-      }
-    }
-    stage('Sleep 10 min') {
-      steps {
-        echo 'Sleeping'
-        sleep(time: 10, unit: 'MINUTES')
+packer --version'''
       }
     }
   }
