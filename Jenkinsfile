@@ -1,12 +1,15 @@
-
 pipeline {
   agent any
   stages {
-    stage('Test InSpec') {
+    stage('Test Packer') {
       steps {
-        echo 'Testing Inspex'
-        sh '''cp -f /var/lib/jenkins/inspecTests/test.rb test.rb
-sudo inspec exec test.rb -t ssh://ec2-user@34.228.213.218 -i /home/ec2-user/.ssh/id_rsa'''
+        echo 'Testing Packer'
+        sh '''(cd /var/lib/jenkins/terraformPractice/; sudo git pull)
+cp -f /var/lib/jenkins/variables/variables.json variables.json
+cp -f /var/lib/jenkins/terraformPractice/rhel.json rhel.json
+cp -f /var/lib/jenkins/terraformPractice/script.sh script.sh
+cp -f /var/lib/jenkins/terraformPractice/hello.txt hello.txt
+packer build -var-file=variables.json rhel.json'''
       }
     }
   }
